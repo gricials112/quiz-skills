@@ -1,0 +1,4 @@
+interface:
+  display_name: "Quiz HTML Style Replicator"
+  short_description: "Clone quiz HTML style and dropdown behavior"
+  default_prompt: "Use $quiz-html-style-replicator to make this quiz HTML match the provided reference page."

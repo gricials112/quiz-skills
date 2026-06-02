@@ -1,0 +1,4 @@
+interface:
+  display_name: "Quiz Answer Writer"
+  short_description: "Write consistent quiz answers and explanations"
+  default_prompt: "Use $quiz-answer-writer to generate concise answers and explanations for these quiz questions."
