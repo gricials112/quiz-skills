@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="科目名称">
+
+<title>科目名称 — 标题</title>
+
+<!-- Bootstrap Icons + CSS via CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS bundle for ScrollSpy -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+
+<style>
+/* ===== Base ===== */
+body {
+margin: 0;
+font-family: "Noto Serif CJK SC", "Source Han Serif SC", "SimSun", "Songti SC", serif;
+font-size: 17px;
+font-weight: 400;
+color: #212529;
+line-height: 1.8;
+background: #fff;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+width: 0.8em;
+margin: 0 0.8em 0.2em -1em; vertical-align: middle;
+}
+
+/* ===== Headings ===== */
+h1 { font-size: 34px; font-weight: 600; line-height: 1.2; margin: 0 0 0.5em; color: #212529; }
+h2 { font-size: 28.05px; font-weight: 600; line-height: 1.2; margin: 0 0 17px; padding: 0 0 8.5px; color: #212529; border-bottom: 1px solid #dee2e6; }
+h3 { font-size: 24.65px; font-weight: 600; line-height: 1.2; margin: 25.5px 0 8.5px; color: #212529; }
+h4 { font-size: 1.1em; font-weight: 600; }
+
+/* ===== Content ===== */
+p { margin: 0 0 17px; }
+.lead, .subtitle { font-size: 21.25px; font-weight: 300; line-height: 1.8; margin: 5.3125px 0 10.625px; color: #212529; }
+strong { font-weight: 700; }
+ol { margin: 0 0 17px; padding: 0 0 0 34px; }
+li { font-size: 14.875px; line-height: 1.8; color: #212529; }
+a { color: #0d6efd; text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:not([href]) { color: inherit; }
+section.level2 { margin: 0; }
+section.level3 { margin: 0; }
+
+/* ===== Layout (reference grid: 128|799|26|215|32) ===== */
+#quarto-content {
+max-width: 1200px; margin: 0 auto;
+display: grid;
+grid-template-columns: 128px minmax(auto,799px) 26px 215px 32px;
+}
+main.content {
+grid-column: 2; width: 100%;
+padding: 0; margin: 17px 0;
+}
+#quarto-margin-sidebar {
+grid-column: 4;
+position: sticky; top: 0; align-self: flex-start;
+max-height: 100vh; overflow-y: auto;
+padding: 17px 0 0; margin: 0;
+}
+
+/* ===== Title block ===== */
+header.quarto-title-block { margin: -1px 0 17px; }
+.quarto-title h1 { font-size: 34px; font-weight: 600; line-height: 1.2; margin: 0; }
+.quarto-title-meta-author { display: flex; flex-wrap: wrap; gap: 5px 30px; font-size: 0.85em; color: #6c757d; margin: 15px 0; }
+.quarto-title-meta-heading { font-weight: 600; color: #495057; }
+.quarto-title-meta-contents p { margin: 0; }
+
+/* ===== TOC Sidebar ===== */
+#TOC { font-size: 0.875em; }
+#TOC h2#toc-title {
+font-size: 1em; font-weight: 500; line-height: 1.2;
+margin: 5.1px 0 3.4px; padding: 0; color: #212529; border: none;
+}
+#TOC ul { list-style: none; margin: 0; padding: 0; }
+#TOC ul ul { padding-left: 0; }
+#TOC li { margin: 0; font-size: 1em; }
+/* TOC top-level links: blue */
+#TOC > ul > li > a {
+color: #0d6efd; display: block;
+padding: 3.4px 0 3.4px 10.2px; line-height: 1.257; text-decoration: none;
+}
+#TOC > ul > li > a:hover { color: #0a58ca; }
+/* TOC nested links: dark */
+#TOC ul ul a {
+color: #212529; display: block;
+padding: 3.4px 0 3.4px 17.85px; line-height: 1.257; text-decoration: none;
+}
+#TOC ul ul a:hover { color: #0a58ca; }
+#TOC ul.collapse { display: block; }
+
+/* ===== Alternate formats ===== */
+.quarto-alternate-formats { margin-top: 20px; padding-top: 15px; border-top: 1px solid #dee2e6; }
+.quarto-alternate-formats h2 { font-size: 0.95em; border: none; margin: 0 0 5px; padding: 0; color: #212529; }
+.quarto-alternate-formats ul { list-style: none; margin: 0; padding: 0; }
+.quarto-alternate-formats li { margin: 3px 0; }
+.quarto-alternate-formats a { color: #0d6efd; }
+
+/* ===== Details / Summary (reference-compatible) ===== */
+details { margin: 8px 0; padding: 0; border: none; background: transparent; }
+summary {
+cursor: pointer; font-weight: normal; font-size: 1em;
+padding: 4px 8px; background: transparent; border: none;
+color: #0066cc; text-decoration: none; display: inline;
+}
+summary:hover { color: #004499; }
+details[open] summary { color: #004499; }
+
+/* ===== Answer toggle (fixed top-right) ===== */
+.answer-toggle-container { position: fixed; top: 10px; right: 10px; z-index: 1000; }
+.answer-toggle-link { color: #0066cc; text-decoration: none; cursor: pointer; font-size: 13px; font-weight: normal; padding: 4px 0; }
+.answer-toggle-link:hover { color: #004499; text-decoration: none; }
+
+/* ===== Anchors ===== */
+h2.anchored, h3.anchored { position: relative; }
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+#quarto-content { grid-template-columns: 128px minmax(auto,799px) 26px 32px; }
+#quarto-margin-sidebar { display: none; }
+main.content { max-width: 100%; }
+}
+</style>
+
+<!-- Answer toggle script (reference-compatible) -->
+<script>
+const showAnswers = false;
+document.addEventListener('DOMContentLoaded', function() {
+    const details = document.querySelectorAll('details');
+    details.forEach(detail => {
+        detail.open = (typeof showAnswers !== 'undefined' && showAnswers) ? true : false;
+    });
+    const linkContainer = document.createElement('div');
+    linkContainer.className = 'answer-toggle-container';
+    const toggleLink = document.createElement('a');
+    toggleLink.className = 'answer-toggle-link';
+    toggleLink.href = 'javascript:void(0)';
+    let allVisible = typeof showAnswers !== 'undefined' && showAnswers;
+    toggleLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        allVisible = !allVisible;
+        details.forEach(detail => { detail.open = allVisible; });
+        toggleLink.textContent = allVisible ? '隐藏所有答案' : '显示所有答案';
+    });
+    toggleLink.textContent = allVisible ? '隐藏所有答案' : '显示所有答案';
+    linkContainer.appendChild(toggleLink);
+    document.body.appendChild(linkContainer);
+});
+</script>
+
+<!-- Active TOC scroll tracking (IntersectionObserver) -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const tocLinks = document.querySelectorAll('#TOC a.nav-link');
+    const sections = [];
+    tocLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+            const section = document.querySelector(href);
+            if (section) sections.push({ el: section, link: link });
+        }
+    });
+    if (sections.length === 0) return;
+    sections.forEach(s => s.link.classList.remove('active'));
+    if (sections[0]) sections[0].link.classList.add('active');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const idx = sections.findIndex(s => s.el === entry.target);
+                if (idx >= 0) {
+                    sections.forEach(s => s.link.classList.remove('active'));
+                    sections[idx].link.classList.add('active');
+                }
+            }
+        });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    sections.forEach(s => observer.observe(s.el));
+});
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<!-- ===== MAIN CONTENT (must come BEFORE sidebar for grid layout) ===== -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">标题</h1>
+<p class="subtitle lead">副标题</p>
+</div>
+<div class="quarto-title-meta-author">
+<div class="quarto-title-meta-heading">科目</div>
+<div class="quarto-title-meta-heading">题型</div>
+<div class="quarto-title-meta-contents"><p class="author">科目名称</p></div>
+<div class="quarto-title-meta-contents"><p class="affiliation">题型说明</p></div>
+</div>
+</header>
+
+<p>说明文字，点击 <strong>点击展开</strong> 查看答案和解析，或使用右上角 <strong>显示所有答案</strong> 一键切换。</p>
+
+<!-- ==================== 章节1 ==================== -->
+<section id="sec-xxx" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="sec-xxx"><span class="header-section-number">1</span> 章节标题</h2>
+
+<section id="sec-xxx-1" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="sec-xxx-1"><span class="header-section-number">1.1</span> 子标题</h3>
+
+<p><strong>1. 题目文字（ ）。</strong></p>
+<ol type="A">
+<li>选项A</li>
+<li>选项B</li>
+<li>选项C</li>
+<li>选项D</li>
+</ol>
+<details>
+<summary>
+点击展开
+</summary>
+<p><strong>答案: X</strong></p>
+<p><strong>解析:</strong> 解析文字。</p>
+</details>
+
+<p><strong>2. 题目文字（ ）。</strong></p>
+<ol type="A">
+<li>选项A</li>
+<li>选项B</li>
+<li>选项C</li>
+<li>选项D</li>
+</ol>
+<details>
+<summary>
+点击展开
+</summary>
+<p><strong>答案: X</strong></p>
+<p><strong>解析:</strong> 解析文字。</p>
+</details>
+
+</section>
+
+<section id="sec-xxx-2" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="sec-xxx-2"><span class="header-section-number">1.2</span> 子标题</h3>
+
+<p><strong>3. 题目文字（ ）。</strong></p>
+<ol type="A">
+<li>选项A</li>
+<li>选项B</li>
+<li>选项C</li>
+<li>选项D</li>
+</ol>
+<details>
+<summary>
+点击展开
+</summary>
+<p><strong>答案: X</strong></p>
+<p><strong>解析:</strong> 解析文字。</p>
+</details>
+
+</section>
+
+<section id="sec-xxx-3" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="sec-xxx-3"><span class="header-section-number">1.3</span> 简答</h3>
+
+<p><strong>N. 简答题题目？</strong></p>
+<details>
+<summary>
+点击展开
+</summary>
+<p><strong>答案:</strong> 答案文字。</p>
+<p><strong>解析:</strong> 解析文字。</p>
+</details>
+
+</section>
+</section>
+
+</main>
+
+<!-- ===== SIDEBAR (must come AFTER main) ===== -->
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<nav id="TOC" role="doc-toc" class="toc-active">
+<h2 id="toc-title">目录</h2>
+<ul>
+<li><a href="#sec-xxx" id="toc-sec-xxx" class="nav-link active" data-scroll-target="#sec-xxx"><span class="header-section-number">1</span> 章节标题</a>
+<ul class="collapse">
+<li><a href="#sec-xxx-1" id="toc-sec-xxx-1" class="nav-link" data-scroll-target="#sec-xxx-1"><span class="header-section-number">1.1</span> 子标题</a></li>
+<li><a href="#sec-xxx-2" id="toc-sec-xxx-2" class="nav-link" data-scroll-target="#sec-xxx-2"><span class="header-section-number">1.2</span> 子标题</a></li>
+<li><a href="#sec-xxx-3" id="toc-sec-xxx-3" class="nav-link" data-scroll-target="#sec-xxx-3"><span class="header-section-number">1.3</span> 简答</a></li>
+</ul>
+</li>
+</ul>
+<div class="quarto-alternate-formats"><h2>其他格式</h2><ul><li><a href="quiz.pdf"><i class="bi bi-file-pdf"></i> PDF</a></li></ul></div></nav>
+</div>
+
+</div>
+
+</body>
+</html>

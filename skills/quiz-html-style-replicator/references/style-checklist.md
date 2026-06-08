@@ -1,109 +1,45 @@
-# Quiz HTML style replication checklist
+# Style replication checklist
 
-Use this reference when exact style cloning matters.
+When replicating the reference HTML style, use `getComputedStyle()` + `getBoundingClientRect()` for exact values.
 
-## Source of truth order
+## Layout (grid)
 
-1. Live rendered behavior in the browser.
-2. Actively served HTML/CSS/JS.
-3. Reference HTML source.
-4. Generated target HTML source.
-
-If source and runtime conflict, trust runtime unless cache or stale artifacts are proven.
-
-## Head cloning
-
-For exact match requests, copy the reference `<head>` first, then adjust only target-specific fields:
-
-- `<meta name="author">`
-- `<title>`
-- optional favicon or PDF link paths if they point to target-specific files
-
-Do not hand-recreate large embedded Quarto CSS or Bootstrap icon fonts. Preserve:
-
-- base Quarto CSS;
-- Bootstrap icon font declarations;
-- answer toggle CSS;
-- Quarto after-body script dependencies when present.
-
-## Body shell cloning
-
-Preserve target quiz content but make the outer shell match:
-
-```html
-<body class="quarto-light">
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
+```
+128px | 799px(main) | 26px | 215px(sidebar) | 32px = 1200px total
 ```
 
-Common required attributes:
+HTML order: `<main>` first → sidebar second. Sidebar uses `grid-column: 4`.
 
-- TOC links: `id="toc-..."`, `class="nav-link"`, `data-scroll-target="#..."`
-- Section headings: `class="anchored"` and `data-anchor-id`
-- Content: `<main class="content" id="quarto-document-content">`
+## Typography (Noto Serif CJK SC, 17px base)
 
-## Answer disclosure behavior
+| Element | px | weight | notes |
+|---------|----|--------|-------|
+| body | 17px | 400 | line-height: 1.8 |
+| h1 | 34px | 600 | |
+| h2 | 28.05px | 600 | border-bottom, padding-bottom 8.5px |
+| h3 | 24.65px | 600 | margin: 25.5px 0 8.5px |
+| .subtitle.lead | 21.25px | 300 | **only** subtitle uses this |
+| p (body) | 17px | 400 | intro text is normal <p> |
+| li | 14.875px | 400 | |
+| ol padding | — | — | 0 0 0 34px |
 
-Reference-like answer toggles usually include:
+## TOC
 
-```js
-const showAnswers = false;
-document.addEventListener('DOMContentLoaded', function() {
-  const details = document.querySelectorAll('details');
-  details.forEach(detail => detail.open = false);
-  ...
-});
-```
+| Part | color | padding |
+|------|-------|---------|
+| #TOC | 0.875em base | — |
+| top-level a | #0d6efd (blue) | 3.4px 0 3.4px 10.2px |
+| nested a (ul ul) | #212529 (dark) | 3.4px 0 3.4px 17.85px |
 
-Expected behavior:
+Set `#TOC li { font-size: 1em }` to prevent compounding.
 
-- initial page load hides all answer details;
-- clicking a summary opens only that detail;
-- clicking `显示所有答案` opens all details;
-- clicking again closes all details and changes text to `显示所有答案`.
+## Details / Summary
 
-## Content preservation checks
+- summary: `#0066cc`, padding 4px 8px, no border, transparent
+- summary:hover: `#004499`
+- details: margin 8px 0, no border, transparent
+- Answer toggle: fixed top-right, `#0066cc`, `13px`
 
-Before and after editing, count:
+## Scroll tracking
 
-- number of `<details>` blocks;
-- number of `<summary>` blocks;
-- number of answer labels;
-- number of option lists;
-- number of level-2 and level-3 sections.
-
-Counts should only change when the user asks to add/remove questions.
-
-## Visual QA
-
-Use local HTTP preview for browser validation:
-
-```bash
-cd <directory-containing-html>
-python3 -m http.server 8765
-```
-
-Open:
-
-```text
-http://127.0.0.1:8765/<target-file>.html
-```
-
-Verify at minimum:
-
-- right-side table of contents is visible and sticky;
-- active TOC link styling matches the reference;
-- title block spacing and fonts match;
-- question paragraph, option list, summary link, answer, and analysis spacing match;
-- anchor icon appears beside headings on hover or as configured by the reference;
-- responsive behavior hides or changes the sidebar the same way as the reference.
-
-## Common mistakes
-
-- Replacing target questions with reference questions.
-- Keeping old custom CSS that overrides the copied reference CSS.
-- Omitting Quarto after-body script, breaking anchors or active TOC state.
-- Leaving TOC links without `data-scroll-target`.
-- Using `file://` preview when the browser tool blocks local file URLs; serve over localhost instead.
-- Matching only colors but not layout classes and scripts.
+Use IntersectionObserver: `rootMargin: '-80px 0px -60% 0px'`
